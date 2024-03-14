@@ -1,10 +1,11 @@
 package net.tfobz.vokabeltrainer.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 import java.util.Date;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Ignore;
+import org.junit.Test;
 
 public class VokabeltrainerDBTest
 {

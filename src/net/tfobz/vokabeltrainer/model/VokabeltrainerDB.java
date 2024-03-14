@@ -68,7 +68,7 @@ public class VokabeltrainerDB
 	protected static final String INSERT_LERNKARTEI2 = "INSERT INTO lernkarteien(lbeschreibung, lworteinsbeschreibung, lwortzweibeschreibung, lrichtung, lgrosskleinschreibung) "
 			+ "  VALUES('Vokabeltrainer Deutsch Italienisch','Deutsch','Italienisch',false,true);";
 	protected static final String INSERT_LERNKARTEI3 = "INSERT INTO lernkarteien(lbeschreibung, lworteinsbeschreibung, lwortzweibeschreibung, lrichtung, lgrosskleinschreibung) "
-			+ "  VALUES('Vokabeltrainer Deutsch Franz�sisch','Deutsch','Franz�sisch',false,true);";
+			+ "  VALUES('Vokabeltrainer Deutsch Franzoesisch','Deutsch','Franzoesisch',false,true);";
 	protected static final String INSERT_FACH11 = "INSERT INTO faecher(fbeschreibung, ferinnerung, fgelerntam, lnummer) "
 			+ "  VALUES('Fach 1',0,'" + getActualDate() + "', 1);";
 	protected static final String INSERT_FACH21 = "INSERT INTO faecher(fbeschreibung, ferinnerung, fgelerntam, lnummer) "
@@ -76,14 +76,14 @@ public class VokabeltrainerDB
 	protected static final String INSERT_KARTE111 = "INSERT INTO karten(kworteins, kwortzwei, fnummer) "
 			+ "  VALUES('Haus','house',1);";
 
-	static {
-		// L�scht Tabellen
+	/*static {
+		// L.scht Tabellen
 		loeschenTabellen();
 		// Erstellen der Tabellen falls nicht vorhanden
 		erstellenTabellen();
-		// Hinzuf�gen von Testdaten
+		// Hinzuf.gen von Testdaten
 		hinzufuegenTestdaten();
-	}
+	}*/
 
 	/**
 	 * Die Methode zeigt, wie die Klasse VokabeltrainerDB verwendet werden kann, um auf die
@@ -97,7 +97,7 @@ public class VokabeltrainerDB
 			System.out.println(lernkartei);
 		// Holt sich die erste Lernkartei aus der Liste
 		Lernkartei lernkartei = lernkarteien.get(0);
-		// Holt sich alle F�cher dieser Lernkartei
+		// Holt sich alle F.cher dieser Lernkartei
 		List<Fach> faecher = VokabeltrainerDB.getFaecher(lernkartei.getNummer());
 		for (Fach fach: faecher)
 			System.out.println(fach);
@@ -111,7 +111,7 @@ public class VokabeltrainerDB
 	/**
 	 * ACHTUNG: In die Einstellungen-Tabelle wird ein Datensatz hineingeschrieben
 	 */
-	protected static void erstellenTabellen() {
+	public static void erstellenTabellen() {
 		Connection con = null;
 		Statement stmt = null;
 		try {
@@ -133,7 +133,7 @@ public class VokabeltrainerDB
 		}
 	}
 
-	protected static void loeschenTabellen() {
+	public static void loeschenTabellen() {
 		Connection con = null;
 		Statement stmt = null;
 		try {
@@ -152,7 +152,7 @@ public class VokabeltrainerDB
 		}
 	}
 
-	protected static void hinzufuegenTestdaten() {
+	public static void hinzufuegenTestdaten() {
 		Connection con = null;
 		Statement stmt = null;
 		try {
@@ -176,7 +176,7 @@ public class VokabeltrainerDB
 	protected static Connection getConnection() throws SQLException {
 		Connection ret = null;
 		try {
-			// Registrieren des JDBC-Treibers f�r HSQLDB
+			// Registrieren des JDBC-Treibers f.r HSQLDB
 			Class.forName("org.hsqldb.jdbcDriver");
 		} catch (ClassNotFoundException e) {
 			throw new SQLException("HSQLDB-Treiber nicht gefunden");
@@ -187,12 +187,12 @@ public class VokabeltrainerDB
 		p.setProperty("user", "SA");
 		p.setProperty("password", "");
 		// Wenn das letzte Verbindungsobjekt zur Datenbank geschlossen wird,
-		// wird ein SHUTDOWN durchgef�hrt, welches Daten�nderungen in
+		// wird ein SHUTDOWN durchgef.hrt, welches Daten.nderungen in
 		// .script-Datei schreibt
 		p.setProperty("shutdown", "true");
 		// Datenbank wird angelegt falls nicht vorhanden
-		// �ffnen der Datenbankverbindung. "file" bedeutet dass die Datenbank
-		// aus Memory-Tabellen besteht. "mem" w�rde ausschlie�lich Temp-Tabellen
+		// .ffnen der Datenbankverbindung. "file" bedeutet dass die Datenbank
+		// aus Memory-Tabellen besteht. "mem" w.rde ausschlie.lich Temp-Tabellen
 		// anlegen
 		ret = DriverManager.getConnection("jdbc:hsqldb:file:" + DB_NAME, p);
 		ret.setAutoCommit(false);
@@ -200,7 +200,7 @@ public class VokabeltrainerDB
 	}
 
 	/**
-	 * Holt die Lernkartei welche die �bergebene Nummer hat aus der Datenbank
+	 * Holt die Lernkartei welche die .bergebene Nummer hat aus der Datenbank
 	 * @param nummer
 	 * @return null falls Lernkartei nicht gefunden werden kann
 	 */
@@ -279,10 +279,10 @@ public class VokabeltrainerDB
 	}
 
 	/**
-	 * Liefert zur übergebenen Lernkartei die F�cher
+	 * Liefert zur übergebenen Lernkartei die F.cher
 	 * @return null falls die Lernkartei nicht existiert oder Datenbankfehler
 	 * aufgetreten ist<br>
-	 * eine leere ArrayList wenn keine F�cher zur Lernkartei existieren
+	 * eine leere ArrayList wenn keine F.cher zur Lernkartei existieren
 	 */
 	public static List<Fach> getFaecher(int nummerLernkartei) {
 		ArrayList<Fach> ret = null;
@@ -326,8 +326,8 @@ public class VokabeltrainerDB
 	}
 
 	/**
-	 * Sucht das Fach mit der �bergebenen Nummer. Dabei muss das Fach zur
-	 * Lernkartei mit der �bergebenen Nummer geh�ren
+	 * Sucht das Fach mit der .bergebenen Nummer. Dabei muss das Fach zur
+	 * Lernkartei mit der .bergebenen Nummer geh.ren
 	 * @param nummerLernkartei
 	 * @param nummerFach
 	 * @return null falls Fach oder Lernkartei nicht vorhanden sind oder Datenbankfehler aufgetreten ist
@@ -364,7 +364,7 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Sucht das Fach mit der �bergebenen Nummer
+	 * Sucht das Fach mit der .bergebenen Nummer
 	 * @param nummerFach
 	 * @return null falls Fach nicht vorhanden sind oder Datenbankfehler aufgetreten ist
 	 */
@@ -399,9 +399,9 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Liefert eine zuf�llige Karte aus dem �bergebenen Fach der �bergebenen Lernkartei. Es wird 
+	 * Liefert eine zuf.llige Karte aus dem .bergebenen Fach der .bergebenen Lernkartei. Es wird 
 	 * nicht abgespeichert, dass in diesem Fach heute gelernt wurde. Das Fach muss zur aktuellen 
-	 * Lernkartei geh�ren
+	 * Lernkartei geh.ren
 	 * @param nummerLernkartei
 	 * @param nummerFach
 	 * @return null falls das Fach und/oder Lernkartei nicht existiert oder
@@ -446,7 +446,7 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Liefert die Karte mit der �bergebenen Nummer
+	 * Liefert die Karte mit der .bergebenen Nummer
 	 * @param nummerKarte
 	 * @return null falls Datenbankfehler aufgetreten ist oder die 
 	 * Karte nicht gefunden werden konnte
@@ -605,9 +605,9 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * F�gt neues Fach zur aktuellen Lernkartei am Ende hinzu. Im Fach wird die Nummer gesetzt,
+	 * F.gt neues Fach zur aktuellen Lernkartei am Ende hinzu. Im Fach wird die Nummer gesetzt,
 	 * welche vom Datenbanksystem vergeben wird. Im Fach wird gelerntAm auf das heutige
-	 * Datum gesetzt falls im �bergebenen Objekt gelerntAm nicht gesetzt wurde. Wurde die 
+	 * Datum gesetzt falls im .bergebenen Objekt gelerntAm nicht gesetzt wurde. Wurde die 
 	 * Fachbeschreibung nicht gesetzt, so wird diese auf "Fach <Nummer in Lernkartei>" gesetzt
 	 * @param nummerLernkartei
 	 * @param fach
@@ -658,8 +658,8 @@ public class VokabeltrainerDB
 	}
 	 
 	/**
-	 * �ndert die Inhalte eines bestehenden Faches. Dabei k�nnen nur die Beschreibung,
-	 * die Erinnerung und gelerntAm ge�ndert werden
+	 * .ndert die Inhalte eines bestehenden Faches. Dabei k.nnen nur die Beschreibung,
+	 * die Erinnerung und gelerntAm ge.ndert werden
 	 * @param fach
 	 * @return -1 falls Fach noch nicht in Datenbank exisitert oder Datenbankfehler<br>
 	 * -2 falls Validierungsfehler aufgetreten ist
@@ -712,7 +712,7 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * F�gt neue Lernkartei in die Datenbank ein. Die Lernkartei erh�lt die Nummer,
+	 * F.gt neue Lernkartei in die Datenbank ein. Die Lernkartei erh.lt die Nummer,
 	 * welche diese in der Datenbank hat
 	 * @param lernkartei
 	 * @return -1 falls Datenbankfehler aufgetreten ist<br>
@@ -778,12 +778,12 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * �ndert eine bestehende Lernkartei in der Datenbank
+	 * .ndert eine bestehende Lernkartei in der Datenbank
 	 * @param lernkartei
 	 * @return -1 falls Lernkartei nicht in Datenbank existiert oder Datenbankfehler
 	 * aufgetreten ist<br>
 	 * -2 falls Validierungsfehler aufgetreten ist und falls Lernkartei mit dieser
-	 * Beschreibung schon existiert. Im letzteren Fall wird f�r die Beschreibung eine
+	 * Beschreibung schon existiert. Im letzteren Fall wird f.r die Beschreibung eine
 	 * entsprechende Fehlermeldung gesetzt
 	 */
 	public static int aendernLernkartei(Lernkartei lernkartei) {
@@ -841,9 +841,9 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * L�scht die �bergebene Lernkartei aus der Datenbank. Dabei werden
-	 * auch alle F�cher und Karten die zu dieser Lernkartei geh�ren mit
-	 * gel�scht
+	 * L.scht die .bergebene Lernkartei aus der Datenbank. Dabei werden
+	 * auch alle F.cher und Karten die zu dieser Lernkartei geh.ren mit
+	 * gel.scht
 	 * @param nummerLernkartei
 	 * @return -1 falls Lernkartei nicht gefunden wurde oder ein Datenbankfehler 
 	 * aufgetreten ist
@@ -875,12 +875,12 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * F�gt eine neue Karte in das erste Fach der �bergebenen Lernkartei ein. Die
-	 * Karte erh�lt beim Einf�gen die Nummer welche diese in der Datenbank hat
+	 * F.gt eine neue Karte in das erste Fach der .bergebenen Lernkartei ein. Die
+	 * Karte erh.lt beim Einf.gen die Nummer welche diese in der Datenbank hat
 	 * @param nummerLernkartei
 	 * @param karte
 	 * @return -1 wenn Datenbankfehler aufgetreten ist<br>
-	 * -2 falls Karte nicht vollst�ndig ist<br>
+	 * -2 falls Karte nicht vollst.ndig ist<br>
 	 * -3 falls Lernkartei nicht existiert<br>
 	 * -4 falls kein Fach in der Lernkartei existiert<br>
 	 * -5 falls dieselbe Karte in der Lernkartei in irgendeinem Fach schon existiert<br>
@@ -961,12 +961,12 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-   * �ndert von einer bestehenden Karte die W�rter. Andere Eigenschaften der
-	 * Karte k�nnen nicht ge�ndert werden. Die Karte verbleibt in demselben Fach
+   * .ndert von einer bestehenden Karte die W.rter. Andere Eigenschaften der
+	 * Karte k.nnen nicht ge.ndert werden. Die Karte verbleibt in demselben Fach
 	 * @param nummerLernkartei
 	 * @param karte
 	 * @return -1 falls Karte nicht in Datenbank ist oder Datenbankfehler aufgetreten ist<br>
-	 * -2 falls Karte nicht vollst�ndig ist<br>
+	 * -2 falls Karte nicht vollst.ndig ist<br>
 	 * -4 falls Karte mit demselben Inhalten in irgendeinem Fach bereits vorhanden ist
 	 */
 	public static int aendernKarte(Karte karte) {
@@ -1036,7 +1036,7 @@ public class VokabeltrainerDB
 	}
 	
  /**
-	 * L�scht die Karte mit der �bergebenen Nummer aus der Datenbank
+	 * L.scht die Karte mit der .bergebenen Nummer aus der Datenbank
 	 * @param nummerKarte
 	 * @return -1 falls Datenbankfehler aufgetreten ist oder Karte nicht
 	 * gefunden wurde
@@ -1068,8 +1068,8 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * L�scht aus �bergebenen Lernkartei alle F�cher und somit
-	 * alle Karten die den F�chern zugeordnet sind
+	 * L.scht aus .bergebenen Lernkartei alle F.cher und somit
+	 * alle Karten die den F.chern zugeordnet sind
 	 * @param nummerLernkatei
 	 * @return -1 falls Datenbankfehler aufgetreten ist oder Lernkartei nicht
 	 * gefunden wurde
@@ -1100,12 +1100,12 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Liefert eine Liste aller Lernkarteien in denen F�cher existieren deren
-	 * Erinnerung abgelaufen ist. Eine Erinnerung l�uft ab, wenn die Differenz zwischen
-	 * dem heutigen Datum und dem Datum an dem zuletzt gelernt wurde gr��er oder gleich der
-	 * Erinnerung ist. Auch werden alle Lernkarteien zur�ck geliefert
-	 * die F�cher enthalten in denen noch nie gelernt wurde. Ist das Erinnerungsintervall 0 so
-	 * werden die F�cher nicht ber�cksichtigt
+	 * Liefert eine Liste aller Lernkarteien in denen F.cher existieren deren
+	 * Erinnerung abgelaufen ist. Eine Erinnerung l.uft ab, wenn die Differenz zwischen
+	 * dem heutigen Datum und dem Datum an dem zuletzt gelernt wurde gr..er oder gleich der
+	 * Erinnerung ist. Auch werden alle Lernkarteien zur.ck geliefert
+	 * die F.cher enthalten in denen noch nie gelernt wurde. Ist das Erinnerungsintervall 0 so
+	 * werden die F.cher nicht ber.cksichtigt
 	 * @return null falls ein Datenbankfehler aufgetreten ist<br>
 	 * eine leere ArrayList falls keine Lernkarteien zu finden sind
 	 */
@@ -1150,11 +1150,11 @@ public class VokabeltrainerDB
 	}
 	
  /**
-	 * Liefert zur �bergebenen Lernkartei die F�cher bei denen die Erinnerung abgelaufen 
+	 * Liefert zur .bergebenen Lernkartei die F.cher bei denen die Erinnerung abgelaufen 
 	 * ist
 	 * @return null falls Lernkartei nicht existiert oder Datenbankfehler aufgetreten 
 	 * ist<br>
-	 * eine leere ArrayList wenn keine F�cher zur Lernkartei existieren bei denen die
+	 * eine leere ArrayList wenn keine F.cher zur Lernkartei existieren bei denen die
 	 * Erinnerung abgelaufen ist
 	 */
 	public static List<Fach> getFaecherErinnerung(int nummerLernkartei) {
@@ -1197,7 +1197,7 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Holt die Karten des �bergebenen Faches
+	 * Holt die Karten des .bergebenen Faches
 	 * @param nummerFach
 	 * @return null falls Fach nicht vorhanden oder Datenbankfehler aufgetreten ist 
 	 * oder eine leere ArrayList wenn das Fach keine Karten hat
@@ -1241,11 +1241,11 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Importiert Karten in die Lernkartei deren Nummer �bergeben wird. Sollte diese
-	 * schon F�cher und Karten haben, so werden diese vorher gel�scht.
-	 * Tritt beim Importieren ein Fehler auf, so wird das L�schen r�ckg�ngig
+	 * Importiert Karten in die Lernkartei deren Nummer .bergeben wird. Sollte diese
+	 * schon F.cher und Karten haben, so werden diese vorher gel.scht.
+	 * Tritt beim Importieren ein Fehler auf, so wird das L.schen r.ckg.ngig
 	 * gemacht.<br>
-	 * Die unterst�tzten Formate f�r den Import sind:<br>
+	 * Die unterst.tzten Formate f.r den Import sind:<br>
 	 * Haus; house<br>
 	 * Strauch; shrub<br>
 	 * Zaun; fence<br>
@@ -1259,7 +1259,7 @@ public class VokabeltrainerDB
 	 * Garten; Garden; 1<br>
 	 * Ziegel; brick; 2<br>
 	 * Schornstein; chimney; 1<br>
-	 * Hier gibt die dritte Spalte die Zugeh�rigkeit zu den F�chern wieder, welche
+	 * Hier gibt die dritte Spalte die Zugeh.rigkeit zu den F.chern wieder, welche
 	 * ebenfalls neu angelegt werden. Doppelt vorhandene Karten werden nicht importiert
 	 * @nummerLernkartei
 	 * @param pfad
@@ -1425,8 +1425,8 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Exportiert alle Karten der �bergebenen Lernkartei in eine Textdatei mit oder ohne F�cher.
-	 * Dabei wird die Fachnummer am Ende jeder Zeile hinzugef�gt
+	 * Exportiert alle Karten der .bergebenen Lernkartei in eine Textdatei mit oder ohne F.cher.
+	 * Dabei wird die Fachnummer am Ende jeder Zeile hinzugef.gt
 	 * @param nummerLernkartei
 	 * @param pfad
 	 * @param mitFaechern
@@ -1482,7 +1482,7 @@ public class VokabeltrainerDB
 	
 	/**
 	 * Wenn eine Lernkartei als Standard festgelegt wurde, dann wird
-	 * diese zur�ck geliefert
+	 * diese zur.ck geliefert
 	 * @return Lernkartei die als Standardlernkartei gesetzt wurde<br>
 	 * null falls Datenbankfehler aufgetreten ist oder noch keine
 	 * Lernkartei als Standard gesetzt wurde
@@ -1523,9 +1523,9 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Setzt die �bergebene Lernkartei als Standardlernkartei, welche beim
-	 * �ffnen verwendet wird. Wird der Methode -1 �bergeben, so wird der Eintrag
-	 * f�r Standardlernkartei gel�scht
+	 * Setzt die .bergebene Lernkartei als Standardlernkartei, welche beim
+	 * .ffnen verwendet wird. Wird der Methode -1 .bergeben, so wird der Eintrag
+	 * f.r Standardlernkartei gel.scht
 	 * @param nummerLernkartei
 	 * @return -1 falls Lernkartei nicht gefunden wurde oder Datenbankfehler
 	 * aufgetreten ist
@@ -1562,7 +1562,7 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Legt fest, dass Benutzer nur in Lernkarteien mit Erinnerung lernen m�chte
+	 * Legt fest, dass Benutzer nur in Lernkarteien mit Erinnerung lernen m.chte
 	 * @param lernkarteienMitErinnerung
 	 * @return -1 falls Datenbankfehler aufgetreten ist
 	 */
@@ -1592,8 +1592,8 @@ public class VokabeltrainerDB
 	}
 	
 	/**
-	 * Liefert zur�ck ob der Benutzer nur in Lernkarteien mit abgelaufener Erinnerung
-	 * lernen m�chte
+	 * Liefert zur.ck ob der Benutzer nur in Lernkarteien mit abgelaufener Erinnerung
+	 * lernen m.chte
 	 * @return false falls noch keine Einstellung getroffen wurde
 	 */
 	public static boolean getEinstellungenLernkarteienMitErinnerung() {

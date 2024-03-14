@@ -9,4 +9,5 @@ module Vokabeltrainer {
 	requires org.junit.jupiter.api;
 	requires junit;
 	requires jdk.incubator.vector;
+	requires java.desktop;
 }

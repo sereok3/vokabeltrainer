@@ -3,7 +3,7 @@ package net.tfobz.vokabeltrainer.model;
 import java.util.Hashtable;
 
 /**
- * Bei einer Lernkartei müssen die Beschreibung sowie die Beschreibung der beiden Wörter eingegeben werden 
+ * Bei einer Lernkartei m.ssen die Beschreibung sowie die Beschreibung der beiden W.rter eingegeben werden 
  * @author Michael
  */
 public class Lernkartei
@@ -14,6 +14,7 @@ public class Lernkartei
 	protected String wortZweiBeschreibung = null;
 	protected boolean richtung = true;
 	protected boolean grossKleinschreibung = false;
+	public int erinnerungsIntervall = 0;
 
 	protected Hashtable<String, String> fehler = null;
 	

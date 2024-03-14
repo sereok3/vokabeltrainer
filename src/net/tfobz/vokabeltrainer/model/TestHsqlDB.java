@@ -17,7 +17,7 @@ public class TestHsqlDB
 		Connection con = null;
 		Statement stmt = null;
 		try {
-			// Registrieren des JDBC-Treibers für HSQLDB
+			// Registrieren des JDBC-Treibers fuer HSQLDB
 			Class.forName("org.hsqldb.jdbcDriver");
 			
 			// Definition der Verbindungseigenschaften
@@ -26,18 +26,18 @@ public class TestHsqlDB
 			p.setProperty("user","SA");
 			p.setProperty("password","");
 			// Wenn das letzte Verbindungsobjekt zur Datenbank geschlossen wird,
-			// wird ein SHUTDOWN durchgeführt, welches Datenänderungen in 
+			// wird ein SHUTDOWN durchgefuehrt, welches Datenaenderungen in 
 			// .script-Datei schreibt
 			p.setProperty("shutdown","true");
 			// Datenbank wird angelegt falls nicht vorhanden
-			// Öffnen der Datenbankverbindung. "file" bedeutet dass die Datenbank
-			// aus Memory-Tabellen besteht. "mem" würde ausschließlich Temp-Tabellen
+			// .ffnen der Datenbankverbindung. "file" bedeutet dass die Datenbank
+			// aus Memory-Tabellen besteht. "mem" w.rde ausschlie.lich Temp-Tabellen
 			// anlegen
 			con = 
 				DriverManager.getConnection("jdbc:hsqldb:file:testdb",p);
 			con.setAutoCommit(false);
 			stmt = con.createStatement();
-			// Anlegen der Testtabelle mit autoinkrementierenden Primärschlüssel
+			// Anlegen der Testtabelle mit autoinkrementierenden Prim.rschl.ssel
 			// falls noch nicht existent
 			try {
 				stmt.executeUpdate(
@@ -49,12 +49,12 @@ public class TestHsqlDB
 			} catch (SQLException e) {
 				// Fehler tritt auf, falls Tabelle schon existiert, tue also nichts
 			}
-			// Datensätze einfügen
+			// Datens.tze einf.gen
 			stmt.executeUpdate(
 				"INSERT INTO test(name) VALUES ('Sepp');");
 			stmt.executeUpdate(
 				"INSERT INTO test(name) VALUES ('Rudi');");
-			// Datensätze abfragen
+			// Datens.tze abfragen
 			ResultSet rs = stmt.executeQuery(
 				"SELECT * " +
 				"  FROM test;");
